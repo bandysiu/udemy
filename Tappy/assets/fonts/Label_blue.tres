@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dj8i2jsnro6bd"]
+
+[ext_resource type="FontFile" uid="uid://ctbj6l6ygqtl2" path="res://assets/fonts/Skranji-Regular.ttf" id="1_un40c"]
+
+[resource]
+font = ExtResource("1_un40c")
+font_size = 64
+font_color = Color(0.0588235, 0.392157, 0.917647, 1)
+outline_size = 10
+outline_color = Color(0, 0.345098, 0.313726, 1)
+shadow_size = 10
+shadow_color = Color(1.54018e-06, 0, 0.501564, 0.494118)
+shadow_offset = Vector2(4, 3)

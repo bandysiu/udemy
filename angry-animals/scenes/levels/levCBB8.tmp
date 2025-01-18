@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcpciasqap18e"]
+
+[ext_resource type="PackedScene" uid="uid://fppvprq6yu7l" path="res://scenes/levels/level.tscn" id="1_l7sv2"]
+[ext_resource type="PackedScene" uid="uid://b11odfxtx2g0x" path="res://scenes/cup/cup.tscn" id="2_hmjj1"]
+[ext_resource type="PackedScene" uid="uid://b65gi8i04egnc" path="res://scenes/barrier/barrier.tscn" id="3_owrwl"]
+
+[node name="Level" instance=ExtResource("1_l7sv2")]
+
+[node name="Marker2D" parent="." index="1"]
+position = Vector2(146, 186)
+
+[node name="Cup" parent="." index="3" instance=ExtResource("2_hmjj1")]
+position = Vector2(823, 440)
+
+[node name="Barrier2" parent="." index="4" instance=ExtResource("3_owrwl")]
+position = Vector2(494, 482)
+state = 0
+
+[node name="Barrier" parent="." index="6" instance=ExtResource("3_owrwl")]
+position = Vector2(557, 207)
+state = 0
+
+[node name="CanvasLayer" parent="." index="7"]
+visible = false
+
+[node name="Barrier3" parent="." index="8" instance=ExtResource("3_owrwl")]
+position = Vector2(629, 345)
+scale = Vector2(0.5, 0.5)
+state = 0

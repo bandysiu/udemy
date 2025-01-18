@@ -1,0 +1,13 @@
+res://scenes/barrier/barrier.tscn::c2c193e0ac1011a91fdda3f88c7d7dab::1736262776::res://.godot/exported/133200997/export-6b14802c7a9bab90fd15e4fc87161f26-barrier.scn
+res://scenes/bird/bird.tscn::169b167ea94a4cb26f4cfed8c2d2a3e8::1736262791::res://.godot/exported/133200997/export-f68ff1fe5082772a6a77ad3d32843aea-bird.scn
+res://scenes/cup/cup.tscn::9172dbcb7b04dcebebf1966b7960cda2::1736262775::res://.godot/exported/133200997/export-f9c2f786f2c0564367d0e4aa988db4eb-cup.scn
+res://scenes/debug/debug_scene.tscn::3df1c5c184d4d38f83adbe36ecf83e0e::1736262775::res://.godot/exported/133200997/export-8d60e313b5f0d217643b6aabcec7cd3f-debug_scene.scn
+res://scenes/levels/level1.tscn::1203706b1d061ec14a65728298633491::1736262776::res://.godot/exported/133200997/export-66aca7f1013bed41b50055b308d9ad3d-level1.scn
+res://scenes/levels/level2.tscn::52c492ef90dab5b048faafba18296032::1736262776::res://.godot/exported/133200997/export-8706f32c05f13a45b8e02f8bad895f1e-level2.scn
+res://scenes/levels/level3.tscn::f0e5f500f2e279743c00b188aa2956c4::1736262776::res://.godot/exported/133200997/export-d7d11173bd3b60e4b18bdf6d6f78785d-level3.scn
+res://scenes/levels/level.tscn::3e474b8f81a450c93b93aa97eec980e0::1736262775::res://.godot/exported/133200997/export-d2f84246acaf0198009608664807e4e4-level.scn
+res://scenes/levels/scorer.tscn::1fe71aa95fd09f8fc7d59ffc90bd172c::1736262776::res://.godot/exported/133200997/export-30ef41f9613d8dfe235d5e213f348e1d-scorer.scn
+res://scenes/Main/level_button.tscn::6337cbbfabe250137829e8da99bc7aee::1736262775::res://.godot/exported/133200997/export-d15389d7ec3f669c65297ad5aa278058-level_button.scn
+res://scenes/Main/main.tscn::50919c9a203573fc9b1c84fd74218511::1736262775::res://.godot/exported/133200997/export-bab05c2e07c6b8a2ac48ae84f2003109-main.scn
+res://scenes/ui/game_ui.tscn::36bba1ca2a5c4065f025d9702524de25::1736262776::res://.godot/exported/133200997/export-a106103d7888c79f7d91e6628911fcef-game_ui.scn
+res://scenes/water/water.tscn::3070387736a0cf456ef16f96e77d049a::1736262775::res://.godot/exported/133200997/export-4588eabff198c5a76a9a9ed647ab6c7a-water.scn

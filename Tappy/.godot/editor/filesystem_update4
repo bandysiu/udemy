@@ -1,0 +1,15 @@
+res://scenes/game/game.tscn
+res://assets/fonts/Label_blue.tres
+res://assets/fonts/Label_orange.tres
+res://assets/fonts/Label_orange_32.tres
+res://scenes/plane/plane.tscn
+res://scenes/barrier/barrier.tscn
+res://scenes/lazer/lazer.tscn
+res://scenes/pipe/pipe.tscn
+res://scenes/pipes/pipes.tscn
+res://scenes/main/main.tscn
+res://scenes/gameover/gameover.tscn
+res://scenes/hud/hud.tscn
+res://scenes/background/parallax_background.tscn
+res://scenes/background/parallax_layer.tscn
+res://scenes/background/parallax_2d.tscn

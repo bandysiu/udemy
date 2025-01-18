@@ -1,0 +1,14 @@
+Timer
+CollisionShape2D
+Sprite2D
+Area2D
+AnimationPlayer
+VisibleOnScreenNotifier2D
+AudioStreamPlayer2D
+AnimatedSprite2D
+RemoteTransform2D
+PathFollow2D
+Path2D
+AnimatableBody2D
+RigidBody2D
+StaticBody2D

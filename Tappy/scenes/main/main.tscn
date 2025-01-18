@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://t0ql1x0w68x3"]
+
+[ext_resource type="Texture2D" uid="uid://f6d1sqvnrois" path="res://assets/background/sky.png" id="1_hyhii"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_u30f0"]
+[ext_resource type="LabelSettings" uid="uid://dmmnnn58g045g" path="res://assets/fonts/Label_orange.tres" id="2_ojcrm"]
+[ext_resource type="LabelSettings" uid="uid://dj8i2jsnro6bd" path="res://assets/fonts/Label_blue.tres" id="3_lg4lq"]
+[ext_resource type="LabelSettings" uid="uid://cil10vnkmbnm3" path="res://assets/fonts/Label_orange_32.tres" id="4_ca76p"]
+[ext_resource type="AudioStream" uid="uid://cmordk7qmvprq" path="res://assets/audio/bgm_menu.mp3" id="5_f8n2x"]
+
+[sub_resource type="Animation" id="Animation_hibf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/start:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1uxl5"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/start:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.513726), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_do740"]
+_data = {
+"RESET": SubResource("Animation_hibf6"),
+"move": SubResource("Animation_1uxl5")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u30f0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hyhii")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="tappy" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "TAPPY
+PLANE"
+label_settings = ExtResource("2_ojcrm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS SPACE
+TO 
+PLAY"
+label_settings = ExtResource("3_lg4lq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hiscore" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "HISCORE"
+label_settings = ExtResource("4_ca76p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "000
+"
+label_settings = ExtResource("4_ca76p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_do740")
+}
+autoplay = "move"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_f8n2x")
+volume_db = -10.0
+autoplay = true

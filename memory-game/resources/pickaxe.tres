@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://xbg2h3prven3"]
+
+[ext_resource type="Script" path="res://resources/weapon.gd" id="1_osak1"]
+[ext_resource type="Texture2D" uid="uid://dkee5r35uyppk" path="res://assets/glitch/genericItem_color_090.png" id="2_l0o2q"]
+
+[resource]
+script = ExtResource("1_osak1")
+damage = 1
+weapon_name = "pickaxe"
+texture = ExtResource("2_l0o2q")

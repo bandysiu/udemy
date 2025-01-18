@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://25ihapqnrdfv"]
+
+[ext_resource type="Script" path="res://scenes/plane/plane.gd" id="1_auamh"]
+[ext_resource type="Texture2D" uid="uid://cyys7ymthvpp4" path="res://assets/plane/planes_sheet.png" id="1_bs4jh"]
+[ext_resource type="AudioStream" uid="uid://dl61ihom6eoow" path="res://assets/audio/engine.mp3" id="3_ji0rm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awnq1"]
+atlas = ExtResource("1_bs4jh")
+region = Rect2(0, 0, 88, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0piw"]
+atlas = ExtResource("1_bs4jh")
+region = Rect2(88, 0, 88, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab55e"]
+atlas = ExtResource("1_bs4jh")
+region = Rect2(176, 0, 88, 73)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xa02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awnq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0piw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab55e")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7lmfy"]
+radius = 23.0217
+
+[sub_resource type="Animation" id="Animation_msokl"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xu6pj"]
+resource_name = "fall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.523599]
+}
+
+[sub_resource type="Animation" id="Animation_xe0kn"]
+resource_name = "jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvtye"]
+_data = {
+"RESET": SubResource("Animation_msokl"),
+"fall": SubResource("Animation_xu6pj"),
+"jump": SubResource("Animation_xe0kn")
+}
+
+[node name="Plane" type="CharacterBody2D" groups=["player"]]
+top_level = true
+collision_mask = 3
+script = ExtResource("1_auamh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_6xa02")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7lmfy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qvtye")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ji0rm")
+autoplay = true

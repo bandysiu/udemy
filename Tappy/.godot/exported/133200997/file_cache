@@ -1,0 +1,15 @@
+res://assets/fonts/Label_orange.tres::55a3613e64fb64b1962fae4fc9ad11dd::1728758505::res://.godot/exported/133200997/export-3faef38b6f98a51f1e9d2942f86e332f-Label_orange.res
+res://assets/fonts/Label_orange_32.tres::b0fb4aeeffc692f0728a4221c9e8affb::1728758505::res://.godot/exported/133200997/export-d176eb5312a1e17779794669a668ceaa-Label_orange_32.res
+res://assets/fonts/Label_blue.tres::87b02ca359c94e5f6d954520e50f6024::1728758505::res://.godot/exported/133200997/export-0bc7d269db61e82969e2577ef41ffc6c-Label_blue.res
+res://scenes/background/parallax_layer.tscn::d2e71b19d73023bf04f47621c1fe2b91::1728758506::res://.godot/exported/133200997/export-94fc4086d2653c53a033d71385e5fdac-parallax_layer.scn
+res://scenes/background/parallax_background.tscn::b2c640d777f5c4183d381d837373e491::1728758506::res://.godot/exported/133200997/export-5bcf54b73f299825d0f067e0df7b8821-parallax_background.scn
+res://scenes/background/parallax_2d.tscn::1714aef1bd5c57a091a6bbaf47852004::1728758506::res://.godot/exported/133200997/export-978572a5720ed4fc23c549acd5c647f9-parallax_2d.scn
+res://scenes/barrier/barrier.tscn::2b4200cb6b983297ced5284e127d23e3::1728758506::res://.godot/exported/133200997/export-6b14802c7a9bab90fd15e4fc87161f26-barrier.scn
+res://scenes/game/game.tscn::c1f19ca3d98af988d254dd7f819dc4fd::1728758505::res://.godot/exported/133200997/export-69e963a49695dd4030e5c61a12b8ddfe-game.scn
+res://scenes/gameover/gameover.tscn::bf046d0e2e82fd9dfdd31a455b35c329::1728758506::res://.godot/exported/133200997/export-e64600bd1339870f8f51d6e07b0b07c2-gameover.scn
+res://scenes/hud/hud.tscn::5843895e35c1466660385ba2428941c7::1728758506::res://.godot/exported/133200997/export-0e52f078d70b944995e2167b24cb4048-hud.scn
+res://scenes/lazer/lazer.tscn::bd8a3de314f31c8e1920c46bec1723ae::1728758506::res://.godot/exported/133200997/export-62ee58aa5c51400bc8c85553fb3f76ad-lazer.scn
+res://scenes/main/main.tscn::a1c25962e062a931a963685d10974163::1728758506::res://.godot/exported/133200997/export-f39996a6d27a38698d16421ab974097b-main.scn
+res://scenes/pipe/pipe.tscn::2bc161fbab5edee7d72a38863e7652b3::1728758506::res://.godot/exported/133200997/export-923164fd699fbfe8ca59b93e668817dc-pipe.scn
+res://scenes/pipes/pipes.tscn::64d2aef8637ad2f4a3dd900dd5c041d3::1728758506::res://.godot/exported/133200997/export-80d50b6f17c68443164b464bf5aea194-pipes.scn
+res://scenes/plane/plane.tscn::d18b1f0b20a93bc34e695c3822a91c27::1728758506::res://.godot/exported/133200997/export-b298ae0116ba66fbfc1d969c1b18b6ef-plane.scn

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgf7demugmsf2"]
+
+[ext_resource type="LabelSettings" uid="uid://dmmnnn58g045g" path="res://assets/fonts/Label_orange.tres" id="1_iihbd"]
+[ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_p7568"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p7568")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 98.0
+grow_horizontal = 2
+text = "0"
+label_settings = ExtResource("1_iihbd")

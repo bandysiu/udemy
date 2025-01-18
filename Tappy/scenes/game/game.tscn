@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://duwdlxuc42qp2"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_6vpbm"]
+[ext_resource type="Texture2D" uid="uid://csfkl5u7eeda" path="res://assets/background/rocks_2.png" id="1_u331m"]
+[ext_resource type="PackedScene" uid="uid://25ihapqnrdfv" path="res://scenes/plane/plane.tscn" id="2_3bpg1"]
+[ext_resource type="PackedScene" uid="uid://d2645baok7qa" path="res://scenes/background/parallax_2d.tscn" id="3_k7f1w"]
+[ext_resource type="PackedScene" uid="uid://caam1onc67e54" path="res://scenes/barrier/barrier.tscn" id="3_ksjxn"]
+[ext_resource type="Texture2D" uid="uid://f6d1sqvnrois" path="res://assets/background/sky.png" id="4_nuqt0"]
+[ext_resource type="PackedScene" uid="uid://c2bgnyhyfc1f4" path="res://scenes/pipes/pipes.tscn" id="4_v7buo"]
+[ext_resource type="Texture2D" uid="uid://derbf7c8ey0gv" path="res://assets/background/clouds_2.png" id="5_fou07"]
+[ext_resource type="PackedScene" uid="uid://cj4qgl5bnxxfy" path="res://scenes/gameover/gameover.tscn" id="6_gd8q0"]
+[ext_resource type="Texture2D" uid="uid://cdtl0gwxcdvtr" path="res://assets/background/rocks_1.png" id="6_owwif"]
+[ext_resource type="PackedScene" uid="uid://cgf7demugmsf2" path="res://scenes/hud/hud.tscn" id="7_mho7v"]
+[ext_resource type="PackedScene" uid="uid://dr6vo48sjh1ay" path="res://scenes/background/parallax_background.tscn" id="8_v2d2u"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_6vpbm")
+pipes_scene = ExtResource("4_v7buo")
+
+[node name="Paralax" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 427)
+
+[node name="Parallax2D" parent="Paralax" instance=ExtResource("3_k7f1w")]
+scroll_scale = Vector2(0, 0)
+texture = ExtResource("4_nuqt0")
+
+[node name="Parallax2D2" parent="Paralax" instance=ExtResource("3_k7f1w")]
+scroll_scale = Vector2(0, 0)
+autoscroll = Vector2(-20, 0)
+texture = ExtResource("5_fou07")
+
+[node name="Parallax2D3" parent="Paralax" instance=ExtResource("3_k7f1w")]
+scroll_scale = Vector2(0, 0)
+autoscroll = Vector2(-50, 0)
+texture = ExtResource("6_owwif")
+
+[node name="Parallax2D4" parent="Paralax" instance=ExtResource("3_k7f1w")]
+scroll_scale = Vector2(0, 0)
+autoscroll = Vector2(-80, 0)
+texture = ExtResource("1_u331m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(280, 406)
+texture = ExtResource("1_u331m")
+
+[node name="Plane" parent="." instance=ExtResource("2_3bpg1")]
+position = Vector2(70, 300)
+
+[node name="Roof" parent="." instance=ExtResource("3_ksjxn")]
+position = Vector2(0, -29)
+
+[node name="Floor" parent="." instance=ExtResource("3_ksjxn")]
+position = Vector2(-2, 860)
+
+[node name="PipesHolder" type="Node" parent="."]
+
+[node name="PipeSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="SpawnUpper" type="Marker2D" parent="."]
+position = Vector2(530, 300)
+
+[node name="SpawnLower" type="Marker2D" parent="."]
+position = Vector2(530, 580)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gameover" parent="CanvasLayer" instance=ExtResource("6_gd8q0")]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("7_mho7v")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_v2d2u")]
+
+[connection signal="timeout" from="PipeSpawnTimer" to="." method="_on_pipe_spawn_timer_timeout"]

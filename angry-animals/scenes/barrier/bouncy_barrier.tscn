@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ttcmx1qe884r"]
+
+[ext_resource type="Texture2D" uid="uid://bmsuh47otr4qw" path="res://assets/env/elementStone025.png" id="1_bx6qi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_70ulc"]
+rough = true
+bounce = 0.9
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5etau"]
+size = Vector2(64, 216)
+
+[node name="BouncyBarrier" type="StaticBody2D"]
+scale = Vector2(0.5, 1)
+physics_material_override = SubResource("PhysicsMaterial_70ulc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_bx6qi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5etau")
