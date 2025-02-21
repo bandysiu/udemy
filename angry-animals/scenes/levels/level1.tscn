@@ -12,7 +12,7 @@
 [node name="Level" instance=ExtResource("1_l7sv2")]
 
 [node name="Marker2D" parent="." index="1"]
-position = Vector2(788, 30)
+position = Vector2(79, 175)
 
 [node name="Cup" parent="." index="3" instance=ExtResource("2_hmjj1")]
 position = Vector2(823, 440)
@@ -23,8 +23,11 @@ position = Vector2(261, 266)
 [node name="Cup3" parent="." index="5" instance=ExtResource("2_hmjj1")]
 position = Vector2(260, 345)
 
+[node name="CanvasLayer" parent="." index="7"]
+visible = false
+
 [node name="Moving" parent="." index="8" instance=ExtResource("4_is0el")]
-position = Vector2(694, 29)
+position = Vector2(673, 81)
 
 [node name="Moving2" parent="." index="9" instance=ExtResource("4_is0el")]
 position = Vector2(148, 442)

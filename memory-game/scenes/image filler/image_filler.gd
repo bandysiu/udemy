@@ -7,7 +7,7 @@ const PATH: String = "res://assets/glitch/"
 func _ready() -> void:
 	var dir: DirAccess = DirAccess.open(PATH)
 	
-	var image_file_list: ImageFile = ImageFile.new()
+	var image_file_list: ImageFileList = ImageFileList.new()
 	
 	if dir:
 		var files: PackedStringArray = dir.get_files()

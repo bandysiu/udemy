@@ -1,0 +1,13 @@
+res://scenes/game/game.tscn
+res://scenes/image filler/image_filler.gd
+res://test/resource_test.tscn
+res://scenes/image filler/node.tscn
+res://scenes/master/master.tscn
+res://scenes/main/main.tscn
+res://scenes/front sprite/front_sprite.tscn
+res://scenes/level button/level_button.tscn
+res://scenes/memory tile/memory_tile.tscn
+res://scenes/memory tile/memory_tile.gd
+res://scenes/game/game.gd
+res://singletons/image_manager.gd
+res://classes/item_image.gd

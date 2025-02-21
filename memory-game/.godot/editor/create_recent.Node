@@ -1,2 +1,12 @@
+TextureRect
+TextureButton
+Control
+Label
+HBoxContainer
+VBoxContainer
+GridContainer
+MarginContainer
+ColorRect
+CanvasLayer
 Node
 Sprite2D

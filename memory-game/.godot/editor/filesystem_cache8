@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737052439
+::res://::1740167352
 icon.png::CompressedTexture2D::5693792002063487722::1726805728::1736453378::1::::<><>::
 ::res://assets/::1720463091
 GM_32_Dark.tres::LabelSettings::291274636217331174::1715521798::0::1::::<><>::uid://dhgx473pdasy4::::res://assets/fonts/gemunu-libre-v8-latin-700.ttf
@@ -79,16 +79,38 @@ level_select_frame_hover_128.png::CompressedTexture2D::1254154565981266695::1680
 level_select_frame_select_128.png::CompressedTexture2D::356317945660813558::1680084938::1736453378::1::::<><>::
 UIbg.png::CompressedTexture2D::1425380091556170040::1680084938::1736453378::1::::<><>::
 yellow_button00.png::CompressedTexture2D::3376411247250227835::1680084938::1736453378::1::::<><>::
-::res://resources/::1736883935
+::res://classes/::1737568593
+item_image.gd::GDScript::-1::1737566367::0::1::::ItemImage<>RefCounted<>::
+level_data.gd::GDScript::-1::1737568044::0::1::::LevelData<>RefCounted<>::
+selected_level_data.gd::GDScript::-1::1737568593::0::1::::SelectedLevelData<>RefCounted<>::
+::res://resources/::1737566819
 axe.tres::Resource/Weapon::3240176640836079392::1736878017::0::1::::<><>::res://resources/weapon.gd<>uid://b6i6jr0gttwxy::::res://assets/glitch/text_cross_small.png
-image_files_lists.gd::GDScript::-1::1736883787::0::1::::ImageFile<>Resource<>::
-image_files_lists.tres::Resource/ImageFile::5225692523799010839::1736883935::0::1::::<><>::res://resources/image_files_lists.gd
+image_files_lists.gd::GDScript::-1::1737566819::0::1::::ImageFileList<>Resource<>::
+image_files_lists.tres::Resource/ImageFileList::5225692523799010839::1737566819::0::1::::<><>::res://resources/image_files_lists.gd
 pickaxe.tres::Resource/Weapon::1616820711443889790::1736878022::0::1::::<><>::res://resources/weapon.gd<>uid://dkee5r35uyppk::::res://assets/glitch/genericItem_color_090.png
 weapon.gd::GDScript::-1::1736877967::0::1::::Weapon<>Resource<>::
-::res://scenes/::1736883393
-::res://scenes/image filler/::1736883935
-image_filler.gd::GDScript::-1::1736883920::0::1::::<>Node<>::
-node.tscn::PackedScene::5024725402196202683::1736883935::0::1::::<><>::res://scenes/image filler/image_filler.gd
-::res://test/::1736883927
+::res://scenes/::1737655460
+::res://scenes/front sprite/::1740167315
+front_sprite.gd::GDScript::-1::1737578500::0::1::::<>TextureRect<>::
+front_sprite.tscn::PackedScene::8018147828177301013::1740167315::0::1::::<><>::uid://cabqxcbl7a1c4::::res://assets/glitch/ambulance_SE.png<>res://scenes/front sprite/front_sprite.gd
+::res://scenes/game/::1740167315
+game.gd::GDScript::-1::1740167146::0::1::::<>Control<>::
+game.tscn::PackedScene::31740319945862616::1740167315::0::1::::<><>::res://scenes/game/game.gd<>uid://efdir2vdny11::::res://assets/GM_32_Dark.tres<>uid://bp5vnwjxyfojp::::res://assets/ui/blue_button00.png<>uid://cyx8und8howsx::::res://assets/ui/green_button00.png
+::res://scenes/image filler/::1740167315
+image_filler.gd::GDScript::-1::1740166890::0::1::::<>Node<>::
+node.tscn::PackedScene::5024725402196202683::1740167315::0::1::::<><>::res://scenes/image filler/image_filler.gd
+::res://scenes/level button/::1740167315
+level_button.gd::GDScript::-1::1740166890::0::1::::<>TextureButton<>::
+level_button.tscn::PackedScene::9089251273547494482::1740167315::0::1::::<><>::uid://oi5eso30c4wy::::res://assets/ui/level_select_frame_128.png<>uid://fcurfhd8a3gk::::res://assets/ui/level_select_frame_select_128.png<>uid://r4r0ij671f1p::::res://assets/ui/level_select_frame_hover_128.png<>res://scenes/level button/level_button.gd<>uid://bb630qrhxr0ef::::res://assets/GM_32_White.tres
+::res://scenes/main/::1740167315
+main.tscn::PackedScene::1767340417745832223::1740167315::0::1::::<><>::uid://bb475bkqlpx44::::res://assets/LG_84_Green.tres<>uid://dmibyudf0qok0::::res://scenes/front sprite/front_sprite.tscn<>uid://d2q5v1o7y0iv7::::res://scenes/level button/level_button.tscn
+::res://scenes/master/::1740167315
+master.gd::GDScript::-1::1740167217::0::1::::<>CanvasLayer<>::
+master.tscn::PackedScene::4862728372718934395::1740167315::0::1::::<><>::res://scenes/master/master.gd<>uid://b0nv8tofde3h0::::res://assets/images/backgroundEmpty.png<>uid://0gd3rjf1xif4::::res://scenes/main/main.tscn<>uid://pm010oidxv1::::res://scenes/game/game.tscn
+::res://singletons/::1737664344
+game_manager.gd::GDScript::-1::1737570204::0::1::::<>Node<>::
+image_manager.gd::GDScript::-1::1737569049::0::1::::<>Node<>::
+signal_manager.gd::GDScript::-1::1737664344::0::1::::<>Node<>::
+::res://test/::1740167315
 resource_test.gd::GDScript::-1::1736878075::0::1::::<>Node2D<>::
-resource_test.tscn::PackedScene::7571470248473048741::1736883927::0::1::::<><>::res://test/resource_test.gd<>uid://xbg2h3prven3::::res://resources/pickaxe.tres
+resource_test.tscn::PackedScene::7571470248473048741::1740167315::0::1::::<><>::res://test/resource_test.gd<>uid://xbg2h3prven3::::res://resources/pickaxe.tres
