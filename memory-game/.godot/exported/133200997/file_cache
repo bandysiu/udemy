@@ -1,0 +1,16 @@
+res://assets/GM_32_Dark.tres::3f51a86227e57293c9e5fed017052b2f::1715521798::res://.godot/exported/133200997/export-0c519273de4c64554d1170f7393901f6-GM_32_Dark.res
+res://assets/GM_32_White.tres::ff2b8bacaf86ea9b82ba30df2e070d26::1715521799::res://.godot/exported/133200997/export-6d68aa1010f10b69cc0445cc424bdf25-GM_32_White.res
+res://assets/LG_84_Green.tres::e50374a454ac14cc5688058758de8f16::1715521799::res://.godot/exported/133200997/export-a67f425df96439aedeeebb21d6255414-LG_84_Green.res
+res://game over ui/game_over_ui.tscn::197900cc216a9248307ded612cfdd4a6::1740248149::res://.godot/exported/133200997/export-001e77f6e42411bee0291b8ef49da033-game_over_ui.scn
+res://resources/axe.tres::f54c5baed5ea4eb50c3c238dbe6c123d::1736878017::res://.godot/exported/133200997/export-9b9992091e17dd1aba3fa28db106287f-axe.res
+res://resources/image_files_lists.tres::50cb9ac5a3a9432208cef7f3aca0bc03::1737566819::res://.godot/exported/133200997/export-dbd03a4f64186a433b3ce95f2d4874f8-image_files_lists.res
+res://resources/pickaxe.tres::452f5927335a602dbbc98ec98e933f95::1736878022::res://.godot/exported/133200997/export-3b85d48c96b69ff312639929ba0fc1b1-pickaxe.res
+res://scenes/front sprite/front_sprite.tscn::072aef3576dba0bfd280b11db9b8a907::1740248149::res://.godot/exported/133200997/export-b12e47b5316685bb6f17075ce4e61b20-front_sprite.scn
+res://scenes/game/game.tscn::613d1987ea1773ae7c3ac3cc3209bcf8::1740248176::res://.godot/exported/133200997/export-69e963a49695dd4030e5c61a12b8ddfe-game.scn
+res://scenes/image filler/node.tscn::5f9ccfb3e7dabbf11ca825b425432018::1740248149::res://.godot/exported/133200997/export-32579ac3962d8e47dfc047506aa1d379-node.scn
+res://scenes/level button/level_button.tscn::779ff6162843857abc918b78abe21187::1740248149::res://.godot/exported/133200997/export-82046f0e1d7ac639a4f1e50e18f8d0d2-level_button.scn
+res://scenes/main/main.tscn::660f729cbb3b211c57fb30b4069a9673::1740248149::res://.godot/exported/133200997/export-f39996a6d27a38698d16421ab974097b-main.scn
+res://scenes/master/master.tscn::1e3326a3a331d41dd127db6beff32824::1740248149::res://.godot/exported/133200997/export-065143cc8e6d35419e9c8d0464549718-master.scn
+res://scenes/memory tile/memory_tile.tscn::a4c0cca4fa8e31b77c2410ff6122b74d::1740248149::res://.godot/exported/133200997/export-0fac641d3177bbdf4fe069de0c94e54c-memory_tile.scn
+res://scorer/scorer.tscn::ac0888523252f0c877e2c16bc91b0ef5::1740248149::res://.godot/exported/133200997/export-0dab229fd1d5429c6952c896f3238e57-scorer.scn
+res://test/resource_test.tscn::792984303243c9b7910521f6f18fcbdc::1740248149::res://.godot/exported/133200997/export-477741ef6d77d683a1e922f9ceb80a57-resource_test.scn

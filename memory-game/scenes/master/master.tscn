@@ -21,3 +21,5 @@ expand_mode = 1
 
 [node name="Game" parent="." instance=ExtResource("4_jfdg4")]
 visible = false
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]

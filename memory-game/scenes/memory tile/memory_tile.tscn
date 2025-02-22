@@ -20,6 +20,7 @@ grow_vertical = 2
 pivot_offset = Vector2(42, 42)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_on0j8")
 script = ExtResource("2_2vrif")
 
@@ -52,5 +53,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fc2mp")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -5,6 +5,7 @@ extends TextureButton
 
 
 @onready var label: Label = $Label
+@onready var sound: AudioStreamPlayer = $Sound
 
 
 func _ready() -> void:
@@ -17,4 +18,5 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
+	SoundManager.play_button_click(sound)
 	SignalManager.on_level_selected.emit(level_number)

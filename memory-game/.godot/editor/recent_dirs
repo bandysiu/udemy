@@ -1,5 +1,9 @@
-res://scenes/memory tile
+res://
+C:/Users/Vaske/Desktop/Godot/Exports/MemoryMadness
 res://singletons
+res://game over ui
+res://scorer
+res://scenes/memory tile
 res://scenes/game
 res://scenes/level button
 res://scenes/front sprite
@@ -8,4 +12,3 @@ res://scenes/master
 res://scenes/image filler
 res://resources
 res://test
-res://
