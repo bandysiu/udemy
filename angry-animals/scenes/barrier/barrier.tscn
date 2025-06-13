@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b65gi8i04egnc"]
 
 [ext_resource type="Texture2D" uid="uid://bmsuh47otr4qw" path="res://assets/env/elementStone025.png" id="1_guwqw"]
-[ext_resource type="Script" path="res://scenes/barrier/barrier.gd" id="1_y3865"]
+[ext_resource type="Script" uid="uid://dri3g7tutsj8h" path="res://scenes/barrier/barrier.gd" id="1_y3865"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y7e8"]
 size = Vector2(432, 30)
@@ -60,10 +60,10 @@ resource_name = "static"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_noy6y"]
 _data = {
-"RESET": SubResource("Animation_3gcwi"),
-"fast_spin": SubResource("Animation_mlf1o"),
-"slow_spin": SubResource("Animation_d3ab4"),
-"static": SubResource("Animation_o3i4o")
+&"RESET": SubResource("Animation_3gcwi"),
+&"fast_spin": SubResource("Animation_mlf1o"),
+&"slow_spin": SubResource("Animation_d3ab4"),
+&"static": SubResource("Animation_o3i4o")
 }
 
 [node name="Barrier" type="StaticBody2D"]
@@ -80,6 +80,6 @@ shape = SubResource("RectangleShape2D_2y7e8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_noy6y")
+&"": SubResource("AnimationLibrary_noy6y")
 }
 autoplay = "fast_spin"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dduu1cgaox2fn"]
 
-[ext_resource type="Script" path="res://scenes/barrier/moving.gd" id="1_bf6ng"]
+[ext_resource type="Script" uid="uid://c6qgj7xim6xqg" path="res://scenes/barrier/moving.gd" id="1_bf6ng"]
 [ext_resource type="PackedScene" uid="uid://dw8uf8v2tchk2" path="res://scenes/barrier/mover.tscn" id="1_nu6d4"]
 
 [sub_resource type="Curve2D" id="Curve2D_orsx0"]
@@ -84,9 +84,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0qs0k"]
 _data = {
-"RESET": SubResource("Animation_lbv00"),
-"horizontal": SubResource("Animation_knqgj"),
-"vertical": SubResource("Animation_tquss")
+&"RESET": SubResource("Animation_lbv00"),
+&"horizontal": SubResource("Animation_knqgj"),
+&"vertical": SubResource("Animation_tquss")
 }
 
 [node name="Moving" type="Path2D"]
@@ -104,5 +104,5 @@ remote_path = NodePath("../../Mover")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0qs0k")
+&"": SubResource("AnimationLibrary_0qs0k")
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://crtmy8xme8dsq"]
 
 [ext_resource type="FontFile" uid="uid://dg2ybxbh0qyys" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_nvsqh"]
-[ext_resource type="Script" path="res://scenes/ui/game_ui.gd" id="1_qspho"]
+[ext_resource type="Script" uid="uid://u8fbipp4flvj" path="res://scenes/ui/game_ui.gd" id="1_qspho"]
 [ext_resource type="AudioStream" uid="uid://nxwab6mss24m" path="res://assets/audio/jazzyfrenchy.mp3" id="2_odr4n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bsvj4"]

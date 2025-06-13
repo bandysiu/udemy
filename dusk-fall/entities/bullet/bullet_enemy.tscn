@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvsdovasutk6b"]
+
+[ext_resource type="PackedScene" uid="uid://d13tangisxfvs" path="res://entities/bullet/bullet_base.tscn" id="1_snhfg"]
+[ext_resource type="Texture2D" uid="uid://b566rgstivjhe" path="res://assets/enemies/four seasons/Stinger.png" id="2_wpcfb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpcfb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wpcfb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BulletEnemy" instance=ExtResource("1_snhfg")]
+z_index = 1
+collision_layer = 16
+collision_mask = 2
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_wpcfb")

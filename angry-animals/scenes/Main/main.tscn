@@ -70,8 +70,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txadm"]
 _data = {
-"RESET": SubResource("Animation_wnv1j"),
-"new_animation": SubResource("Animation_8onsa")
+&"RESET": SubResource("Animation_wnv1j"),
+&"new_animation": SubResource("Animation_8onsa")
 }
 
 [node name="Main" type="Control"]
@@ -137,6 +137,6 @@ autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_txadm")
+&"": SubResource("AnimationLibrary_txadm")
 }
 autoplay = "new_animation"

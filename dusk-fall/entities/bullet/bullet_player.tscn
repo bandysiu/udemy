@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkoe8lstvylr7"]
+
+[ext_resource type="PackedScene" uid="uid://d13tangisxfvs" path="res://entities/bullet/bullet_base.tscn" id="1_q40ff"]
+[ext_resource type="Texture2D" uid="uid://yvec6uxg60m5" path="res://assets/player/fire-ball.png" id="2_cqdmw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go24p"]
+atlas = ExtResource("2_cqdmw")
+region = Rect2(0, 0, 52, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vyiu"]
+atlas = ExtResource("2_cqdmw")
+region = Rect2(52, 0, 52, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cathj"]
+atlas = ExtResource("2_cqdmw")
+region = Rect2(104, 0, 52, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nacww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go24p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vyiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cathj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="BulletPlayer" instance=ExtResource("1_q40ff")]
+collision_layer = 8
+collision_mask = 4
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-11, -1)
+sprite_frames = SubResource("SpriteFrames_nacww")
+autoplay = "default"
+frame_progress = 0.28801
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

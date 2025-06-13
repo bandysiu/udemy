@@ -1,0 +1,15 @@
+Path2D
+Marker2D
+DirectionalLight2D
+Timer
+Label
+AnimationPlayer
+CollisionShape2D
+Area2D
+AnimationTree
+AudioStreamPlayer2D
+Node2D
+AnimatedSprite2D
+Sprite2D
+AnimatableBody2D
+Node

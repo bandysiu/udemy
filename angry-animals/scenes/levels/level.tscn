@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://fppvprq6yu7l"]
 
-[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_p0twi"]
+[ext_resource type="Script" uid="uid://lbygwrwa12eb" path="res://scenes/levels/level.gd" id="1_p0twi"]
 [ext_resource type="Texture2D" uid="uid://bt5e2vgailvju" path="res://assets/scene/colored_castle.png" id="2_266sr"]
 [ext_resource type="PackedScene" uid="uid://d1t2ij0ia43jr" path="res://scenes/water/water.tscn" id="3_26e8m"]
 [ext_resource type="PackedScene" uid="uid://kp0kdnqi477d" path="res://scenes/levels/scorer.tscn" id="4_4nbj8"]

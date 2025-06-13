@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b11odfxtx2g0x"]
 
-[ext_resource type="Script" path="res://scenes/cup/cup.gd" id="1_pjga6"]
+[ext_resource type="Script" uid="uid://ctwig3hs7qwk0" path="res://scenes/cup/cup.gd" id="1_pjga6"]
 [ext_resource type="Texture2D" uid="uid://bmenhajt5sblu" path="res://assets/env/elementWood004.png" id="1_rr4aj"]
 [ext_resource type="Texture2D" uid="uid://mjg1mblg0ou6" path="res://assets/env/elementWood015.png" id="2_dwac7"]
 [ext_resource type="AudioStream" uid="uid://b125e5eu3acx2" path="res://assets/audio/vanish.wav" id="4_gq38e"]
@@ -81,8 +81,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wwug3"]
 _data = {
-"RESET": SubResource("Animation_gqcvl"),
-"vanish": SubResource("Animation_83p76")
+&"RESET": SubResource("Animation_gqcvl"),
+&"vanish": SubResource("Animation_83p76")
 }
 
 [node name="Cup" type="StaticBody2D" groups=["cup"]]
@@ -113,7 +113,7 @@ polygon = PackedVector2Array(-64, -52, -64, 17, 64, 17, 64, -52, 29, -17, -29, -
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wwug3")
+&"": SubResource("AnimationLibrary_wwug3")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

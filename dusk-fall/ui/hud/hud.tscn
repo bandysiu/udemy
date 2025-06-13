@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7ykt6yxiegml"]
+
+[ext_resource type="Script" uid="uid://dtsxwtos7wds0" path="res://ui/hud/hud.gd" id="1_e0nub"]
+[ext_resource type="FontFile" uid="uid://do2pima07bx81" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_pr3uw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ya5m"]
+font = ExtResource("1_pr3uw")
+font_size = 48
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43m1k"]
+font = ExtResource("1_pr3uw")
+font_size = 64
+font_color = Color(0.105882, 0.52549, 0.894118, 1)
+outline_size = 2
+outline_color = Color(0.027451, 0.917647, 0.564706, 1)
+shadow_color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhfsx"]
+font = ExtResource("1_pr3uw")
+font_size = 32
+outline_size = 2
+outline_color = Color(0.214352, 0.519735, 0.441429, 1)
+shadow_size = 2
+shadow_color = Color(0.309804, 0.337255, 0.54902, 0)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e0nub")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "000"
+label_settings = SubResource("LabelSettings_8ya5m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.00392157, 0.0980392, 0.866667)
+
+[node name="VBLevelComplete" type="VBoxContainer" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBLevelComplete"]
+layout_mode = 2
+text = "Level complete!"
+label_settings = SubResource("LabelSettings_43m1k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/VBLevelComplete"]
+layout_mode = 2
+text = "Press jump to continue"
+label_settings = SubResource("LabelSettings_bhfsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBGameover" type="VBoxContainer" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBGameover"]
+layout_mode = 2
+text = "Game over"
+label_settings = SubResource("LabelSettings_43m1k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect/VBGameover"]
+layout_mode = 2
+text = "Press jump for main menu"
+label_settings = SubResource("LabelSettings_bhfsx")
+horizontal_alignment = 1
+vertical_alignment = 1
