@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnyouhq020q2r"]
+
+[ext_resource type="Script" uid="uid://p3m4uot4s1ew" path="res://entities/checkpoint.gd" id="1_hjeaj"]
+[ext_resource type="Texture2D" uid="uid://dflcjnvg7sugb" path="res://assets/items/FlagWhite16x16.png" id="1_wpuaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjeaj"]
+
+[sub_resource type="Animation" id="Animation_6wqo1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_l3rob"]
+resource_name = "open"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8w72o"]
+_data = {
+&"RESET": SubResource("Animation_6wqo1"),
+&"open": SubResource("Animation_l3rob")
+}
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hjeaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_hjeaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_wpuaw")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8w72o")
+}
+autoplay = "open"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

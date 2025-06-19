@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var _lives: int = 6
+@export var starting_lives: int = 6
 
 enum PlayerState {IDLE, RUN, JUMP, FALL, HURT, ATTACK, DEATH}
 
@@ -10,7 +10,7 @@ const JUMP_VELOCITY: float = -200.0
 const GRAVITY: float = 600.0
 const MAX_FALL: float = 400.0
 const HURT_JUMP_VELOCITY: float = -140.0
-const FALLEN_OFF: float = 200.0
+const FALLEN_OFF: float = 820.0
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var debug_label: Label = $DebugLabel
@@ -22,20 +22,30 @@ const FALLEN_OFF: float = 200.0
 @onready var attack_timer: Timer = $AttackTimer
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var death_timer: Timer = $DeathTimer
+@onready var respawn_timer: Timer = $RespawnTimer
 
+var current_state: PlayerStateMachine
+var last_facing_direction: int
 var _state: PlayerState = PlayerState.IDLE
 var _invincible: bool = false
+var _respawn: Vector2
+var _lives: int
+
 
 func update_debug_label() -> void:
 	debug_label.text = "floor:%s inv:%s\n%.0f, %.0f\n%s\nlives:%s" % [
 		is_on_floor(),
 		_invincible,
 		velocity.x, velocity.y,
-		PlayerState.find_key(_state),
+		current_state,
 		_lives
 	]
 
 func _ready() -> void:
+	SignalManager.on_checkpoint_entered.connect(on_checkpoint_entered)
+	_respawn = global_position
+	_lives = starting_lives
+	change_state("IdleState")
 	call_deferred("late_ready")
 
 func late_ready() -> void:
@@ -47,10 +57,30 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
-	get_input()
-	move_and_slide()
-	update_player_state()
+	handle_player_input(delta)
+	#get_input()
+	#move_and_slide()
+	#update_player_state()
 	update_debug_label()
+
+func change_state(new_state: String) -> void:
+	if current_state:
+		current_state.exit_state()
+	current_state = get_node(new_state)
+	if current_state:
+		current_state.enter_state(self)
+
+func handle_player_input(delta: float) -> void:
+	var direction = Input.get_axis("left", "right")
+	if direction != 0:
+		last_facing_direction = sign(direction)
+	if current_state:
+		current_state.handle_input(delta)
+	move_and_slide()
+	if direction >= 1:
+		sprite.flip_h = false
+	elif direction <= -1:
+		sprite.flip_h = true
 
 func get_input() -> void:
 	if _state == PlayerState.HURT:
@@ -179,3 +209,18 @@ func _on_attack_timer_timeout() -> void:
 func _on_death_timer_timeout() -> void:
 	SignalManager.on_game_over.emit()
 	SoundManager.play_clip(sound, SoundManager.SOUND_GAMEOVER)
+	respawn_timer.start()
+
+func on_checkpoint_entered(position: Vector2) -> void:
+	_respawn = position
+
+func _on_respawn_timer_timeout() -> void:
+	set_process(true)
+	set_physics_process(true)
+	SignalManager.on_respawn.emit()
+	SignalManager.reduce_points.emit(-100)
+	global_position = _respawn
+	_lives = starting_lives
+	late_ready()
+	_state = PlayerState.IDLE
+	animation_player.play("idle")

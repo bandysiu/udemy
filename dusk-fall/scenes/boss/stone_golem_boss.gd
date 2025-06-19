@@ -18,14 +18,17 @@ extends Node2D
 
 enum BOSS_STATE { IDLE, WANDER, GROUND_ATTACK, SHOOT_ATTACK }
 
+@export var lives: int = 2
+
 const CONDITION_ON_TRIGGER: String = "parameters/conditions/on_trigger"
 const CONDITION_CAN_ATTACK: String = "parameters/conditions/can_attack"
 const CONDITION_GROUND_ATTACK: String = "parameters/conditions/ground_attack"
 const CONDITION_SHOOT_ATTACK: String = "parameters/conditions/shoot_attack"
 
-const WANDER_CHANCE: float = 10
-const GROUND_ATTACK_CHANCE: float = 10
+const WANDER_CHANCE: float = 80
+const GROUND_ATTACK_CHANCE: float = 50
 const SPEED: float = 150
+const POINTS: int = 1000
 
 var START_POSITION: Vector2
 var _direction: int = -1
@@ -36,13 +39,13 @@ var _trigger_two: bool = false
 var _idling: bool = false
 var _wandering: bool = false
 var _can_idle: bool = true
+var _invincible: bool = false
 
 func _ready() -> void:
 	START_POSITION = position
 	_state = "start"
 	sprite_2d.frame = 83
 	_player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
-	
 
 func _process(delta: float) -> void:
 	set_state(state_machine.get_current_node())
@@ -65,6 +68,10 @@ func set_state(state: String) -> void:
 	_state = state
 	
 	match state:
+		"death":
+			return
+		"before_death":
+			death()
 		"idle":
 			if _can_idle:
 				decide_on_idle()
@@ -139,6 +146,25 @@ func flip_me() -> void:
 	scale.x *= -1
 	_direction *= -1
 
+func set_invincible(v: bool) -> void:
+	_invincible = v
+
+func take_damage() -> void:
+	if _invincible:
+		return
+	set_invincible(true)
+	reduce_lives()
+
+func reduce_lives() -> void:
+	lives -= 1
+	if lives <= 0:
+		state_machine.travel("before_death")
+
+func death():
+	set_process(false)
+	set_physics_process(false)
+	SignalManager.on_boss_killed.emit(POINTS)
+
 func _on_trigger_1_area_entered(area: Area2D) -> void:
 	_trigger_one = true
 	trigger_1.disabled = true
@@ -163,4 +189,5 @@ func _on_shoot_attack_timer_timeout() -> void:
 	_can_idle = true
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	take_damage()
 	hit_flash.play("hit")

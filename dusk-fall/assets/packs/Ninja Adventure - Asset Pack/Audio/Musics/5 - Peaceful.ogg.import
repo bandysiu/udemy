@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cxc3bvu7q1qy4"
+path="res://.godot/imported/5 - Peaceful.ogg-bb28dedb06ce25aa5ebea52fdf50de4d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/packs/Ninja Adventure - Asset Pack/Audio/Musics/5 - Peaceful.ogg"
+dest_files=["res://.godot/imported/5 - Peaceful.ogg-bb28dedb06ce25aa5ebea52fdf50de4d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

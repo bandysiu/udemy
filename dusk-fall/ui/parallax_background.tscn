@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlhc3li5uvf26"]
+
+[ext_resource type="Texture2D" uid="uid://bejp6ik1fmpk8" path="res://assets/backgrounds/fourseasons/blue.png" id="1_uq12c"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(1, 0.5)
+motion_mirroring = Vector2(360, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 360.0
+offset_bottom = 194.0
+texture = ExtResource("1_uq12c")
+stretch_mode = 1

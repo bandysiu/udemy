@@ -1,9 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://r0xff8mmwjd3"]
+[gd_scene load_steps=24 format=3 uid="uid://r0xff8mmwjd3"]
 
 [ext_resource type="Script" uid="uid://degcix3p23ii0" path="res://entities/player/player.gd" id="1_jpmnn"]
 [ext_resource type="PackedScene" uid="uid://02ghfsqk882j" path="res://entities/bullet/shooter.tscn" id="2_47can"]
 [ext_resource type="Texture2D" uid="uid://jc15lkev3ko5" path="res://assets/player/Chr_Wizard.png" id="2_wyhee"]
 [ext_resource type="PackedScene" uid="uid://b15h7fth54klw" path="res://entities/player/player_cam.tscn" id="3_t8ryu"]
+[ext_resource type="Script" uid="uid://cl78rts5rl1wp" path="res://entities/player/idle_state.gd" id="4_qiwj3"]
+[ext_resource type="Script" uid="uid://dnc2xos1vfmco" path="res://entities/player/moving_state.gd" id="6_26q78"]
+[ext_resource type="Script" uid="uid://4ynip7k82htn" path="res://entities/player/jump_state.gd" id="7_bectd"]
+[ext_resource type="Script" uid="uid://ju6k2qpdtogf" path="res://entities/player/dash_state.gd" id="8_wvtmh"]
 
 [sub_resource type="Animation" id="Animation_ajfn4"]
 length = 0.001
@@ -314,8 +318,25 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("4_qiwj3")
+
+[node name="MovingState" type="Node" parent="."]
+script = ExtResource("6_26q78")
+
+[node name="JumpState" type="Node" parent="."]
+script = ExtResource("7_bectd")
+
+[node name="DashState" type="Node" parent="."]
+script = ExtResource("8_wvtmh")
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

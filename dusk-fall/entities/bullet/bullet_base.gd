@@ -23,7 +23,6 @@ func check_expired(delta: float) -> void:
 func setup(position: Vector2, direction: Vector2, speed: float, life_span: float) -> void:
 	_direction = direction.normalized() * speed
 	_life_span = life_span
-	position.y -= 8
 	global_position = position
 
 func _on_area_entered(area: Area2D) -> void:

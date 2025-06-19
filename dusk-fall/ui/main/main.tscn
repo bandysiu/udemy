@@ -1,0 +1,136 @@
+[gd_scene load_steps=8 format=3 uid="uid://b28enlg1ey5nv"]
+
+[ext_resource type="Texture2D" uid="uid://b7jm1qxwfuu2b" path="res://assets/backgrounds/game_background_3/game_background_3.1.png" id="1_3a1op"]
+[ext_resource type="Script" uid="uid://cm0nwhlaxwc64" path="res://ui/main/main.gd" id="1_ye4sr"]
+[ext_resource type="FontFile" uid="uid://qdbpjiqs41v2" path="res://assets/fonts/Daydream.ttf" id="2_ircy7"]
+[ext_resource type="AudioStream" uid="uid://deq1lnk1uihp6" path="res://assets/packs/Ninja Adventure - Asset Pack/Audio/Musics/1 - Adventure Begin.ogg" id="4_ye4sr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i5l5t"]
+font = ExtResource("2_ircy7")
+font_size = 96
+font_color = Color(0.0375204, 0.275378, 1, 1)
+outline_size = 30
+outline_color = Color(0.84537, 0.844672, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.811765)
+
+[sub_resource type="Animation" id="Animation_1xy46"]
+resource_name = "idle"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0436332, 0.0, -0.0436332, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubw8e"]
+_data = {
+&"idle": SubResource("Animation_1xy46")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(7640, 0)
+script = ExtResource("1_ye4sr")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ye4sr")
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3a1op")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -418.5
+offset_right = 418.5
+offset_bottom = 296.0
+grow_horizontal = 2
+pivot_offset = Vector2(418.5, 148)
+theme_override_constants/margin_top = 170
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Dusk-Fall"
+label_settings = SubResource("LabelSettings_i5l5t")
+
+[node name="Control" type="Control" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.5
+offset_top = -30.0
+offset_right = 418.5
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 24
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ubw8e")
+}
+autoplay = "idle"

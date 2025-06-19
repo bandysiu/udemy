@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpp2tbglq18qb"
+path="res://.godot/imported/Magic5.wav-d5b165864648f7453d0a8b665e780960.sample"
+
+[deps]
+
+source_file="res://assets/packs/Ninja Adventure - Asset Pack/Audio/Sounds/Magic & Skill/Magic5.wav"
+dest_files=["res://.godot/imported/Magic5.wav-d5b165864648f7453d0a8b665e780960.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

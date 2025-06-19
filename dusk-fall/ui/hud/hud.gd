@@ -18,6 +18,7 @@ func _ready() -> void:
 	SignalManager.on_level_start.connect(on_level_start)
 	SignalManager.on_player_hit.connect(on_player_hit)
 	SignalManager.on_game_over.connect(on_game_over)
+	SignalManager.on_respawn.connect(on_respawn)
 	SignalManager.on_score_updated.connect(on_score_updated)
 
 func on_level_start(lives: int) -> void:
@@ -37,6 +38,10 @@ func show_hud() -> void:
 func on_game_over() -> void:
 	vb_gameover.show()
 	show_hud()
+
+func on_respawn() -> void:
+	vb_gameover.hide()
+	color_rect.hide()
 
 func on_score_updated(points: int) -> void:
 	score.text = "%04d" % points

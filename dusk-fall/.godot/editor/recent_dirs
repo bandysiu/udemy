@@ -1,8 +1,13 @@
+res://entities/player
+res://globals/singletons
+res://scenes/levels
+res://scenes
+res://ui/main
+res://ui
+res://entities
 res://assets/enemies
 res://scenes/boss
-res://scenes
 res://assets/player
-res://globals/singletons
 res://ui/hud
 res://entities/enemy/spikes
 res://assets/enemies/four seasons
@@ -14,4 +19,3 @@ res://entities/enemy/bomb
 res://entities/enemy/beach-ball
 res://entities/enemy/mushroom
 res://entities/bullet
-res://entities/player

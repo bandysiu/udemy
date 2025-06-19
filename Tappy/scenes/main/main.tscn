@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://t0ql1x0w68x3"]
 
 [ext_resource type="Texture2D" uid="uid://f6d1sqvnrois" path="res://assets/background/sky.png" id="1_hyhii"]
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_u30f0"]
+[ext_resource type="Script" uid="uid://tanac5w5j3qs" path="res://scenes/main/main.gd" id="1_u30f0"]
 [ext_resource type="LabelSettings" uid="uid://dmmnnn58g045g" path="res://assets/fonts/Label_orange.tres" id="2_ojcrm"]
 [ext_resource type="LabelSettings" uid="uid://dj8i2jsnro6bd" path="res://assets/fonts/Label_blue.tres" id="3_lg4lq"]
 [ext_resource type="LabelSettings" uid="uid://cil10vnkmbnm3" path="res://assets/fonts/Label_orange_32.tres" id="4_ca76p"]
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_do740"]
 _data = {
-"RESET": SubResource("Animation_hibf6"),
-"move": SubResource("Animation_1uxl5")
+&"RESET": SubResource("Animation_hibf6"),
+&"move": SubResource("Animation_1uxl5")
 }
 
 [node name="Main" type="Control"]
@@ -115,7 +115,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_do740")
+&"": SubResource("AnimationLibrary_do740")
 }
 autoplay = "move"
 

@@ -14,6 +14,7 @@ func _ready() -> void:
 	SignalManager.on_enemy_hit.connect(on_enemy_hit)
 	SignalManager.on_pickup_hit.connect(on_pickup_hit)
 	SignalManager.on_game_over.connect(on_game_over)
+	SignalManager.on_boss_killed.connect(on_boss_killed)
 	load_scores_history()
 
 func update_score(point: int) -> void:
@@ -35,6 +36,9 @@ func on_game_over() -> void:
 		"hits": _hits
 	})
 	save_scores()
+
+func on_boss_killed(points: int) -> void:
+	update_score(points)
 
 func reset_score() -> void:
 	_score = 0
@@ -64,3 +68,10 @@ func load_scores_history() -> void:
 
 func compare_scores(a, b):
 	return b.score < a.score
+
+func get_score_history() -> Array[int]:
+	var highscores: Array[int] = []
+	for score in _scores_history:
+		if score.score != 0:
+			highscores.push_back(int(score.score))
+	return highscores

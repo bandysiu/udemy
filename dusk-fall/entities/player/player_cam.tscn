@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bslklw7e7fvgp" path="res://entities/player/player_cam.gd" id="1_06c2i"]
 
 [node name="PlayerCam" type="Camera2D"]
-zoom = Vector2(3, 3)
-limit_bottom = 0
+zoom = Vector2(4, 4)
+limit_left = -1000000
+limit_top = 0
+limit_bottom = 650
 position_smoothing_speed = 20.0
 script = ExtResource("1_06c2i")
 

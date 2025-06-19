@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name EnemyBase
 
-const OFF_SCREEN_KILL: float = 200.0
+const OFF_SCREEN_KILL: float = 820.0
 
 @onready var sound: AudioStreamPlayer2D = $Sound
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
