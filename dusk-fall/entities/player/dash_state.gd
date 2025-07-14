@@ -5,7 +5,7 @@ const DASH_SPEED: float = 300.0
 const DASH_DURATION: float = 0.2
 var dash_timer = 0.0
 
-func enter_state(player_node: CharacterBody2D) -> void:
+func enter_state(player_node: CharacterBody2D, area = null) -> void:
 	super(player_node)
 	var direction = Input.get_axis("left", "right")
 	if direction == 0:

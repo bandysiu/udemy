@@ -1,0 +1,10 @@
+res://scenes/levels/level_base.tscn
+res://ui/hud/hud.gd
+res://scenes/boss/hit_flash.gdshader
+res://scenes/boss/hit_flash.tres
+res://entities/player/hurt_state.gd
+res://entities/player/player.tscn
+res://entities/player/moving_state.gd
+res://entities/player/jump_state.gd
+res://entities/player/player.gd
+res://entities/player/idle_state.gd

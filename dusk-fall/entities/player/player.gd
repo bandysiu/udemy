@@ -1,17 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-@export var starting_lives: int = 6
-
-enum PlayerState {IDLE, RUN, JUMP, FALL, HURT, ATTACK, DEATH}
-
-const SPEED: float = 100.0
-const JUMP_VELOCITY: float = -200.0
-const GRAVITY: float = 600.0
-const MAX_FALL: float = 400.0
-const HURT_JUMP_VELOCITY: float = -140.0
-const FALLEN_OFF: float = 820.0
-
 @onready var sprite: Sprite2D = $Sprite
 @onready var debug_label: Label = $DebugLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -24,20 +13,43 @@ const FALLEN_OFF: float = 820.0
 @onready var death_timer: Timer = $DeathTimer
 @onready var respawn_timer: Timer = $RespawnTimer
 
-var current_state: PlayerStateMachine
+@export var starting_lives: int = 6
+
+@export var SPEED: float = 150.0
+@export var MOVE_ACCELERATION: float = 600
+@export var MOVE_DECELERATION: float = 900
+
+@export var GRAVITY: float = 500.0
+@export var JUMP_VELOCITY: float = -250.0
+@export var JUMP_ACCELERATION: float = 1000
+@export var APEX_THRESHOLD: float = 200.0
+@export var GRAVITY_FALL_MODIFIER: float = 0.005
+@export var JUMP_HORIZONTAL_MODIFIER: float = 0.7
+@export var MAX_FALL_SPEED: float = 400.0
+@export var JUMP_BUFFER_TIME: float = 0.15
+@export var COYOTE_TIME: float = 0.15
+
+@export var KNOCKBACK_TIMER: float = 0.3
+@export var KNOCKBACK_FORCE: float = 100.0
+@export var KNOCKBACK_ACCELERATION: float = 50.0
+@export var KNOCKBACK_DECELARATION: float = 2.0
+
+const FALLEN_OFF: float = 820.0
+
+var _current_state: PlayerStateMachine
 var last_facing_direction: int
-var _state: PlayerState = PlayerState.IDLE
 var _invincible: bool = false
 var _respawn: Vector2
 var _lives: int
-
+var _jump_buffer_timer: float = 0.0
+var _coyote_timer: float = 0.0
 
 func update_debug_label() -> void:
 	debug_label.text = "floor:%s inv:%s\n%.0f, %.0f\n%s\nlives:%s" % [
 		is_on_floor(),
 		_invincible,
 		velocity.x, velocity.y,
-		current_state,
+		_current_state,
 		_lives
 	]
 
@@ -51,143 +63,82 @@ func _ready() -> void:
 func late_ready() -> void:
 	SignalManager.on_level_start.emit(_lives)
 
+func _unhandled_input(event):
+	if event.is_action_pressed("jump"):
+		_jump_buffer_timer = JUMP_BUFFER_TIME
+
 func _physics_process(delta: float) -> void:
-	fallen_off()
-	
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
+	handle_gravity(delta)
 	
 	handle_player_input(delta)
-	#get_input()
-	#move_and_slide()
-	#update_player_state()
 	update_debug_label()
+	
+	if _jump_buffer_timer > 0.0:
+		_jump_buffer_timer -= delta
+	
+	if not is_on_floor():
+		_coyote_timer -= delta
+	else:
+		_coyote_timer = COYOTE_TIME
 
-func change_state(new_state: String) -> void:
-	if current_state:
-		current_state.exit_state()
-	current_state = get_node(new_state)
-	if current_state:
-		current_state.enter_state(self)
+func change_state(new_state: String, area: Area2D = null) -> void:
+	if _current_state:
+		_current_state.exit_state()
+	_current_state = get_node(new_state)
+	if _current_state:
+		_current_state.enter_state(self, area)
 
 func handle_player_input(delta: float) -> void:
 	var direction = Input.get_axis("left", "right")
 	if direction != 0:
 		last_facing_direction = sign(direction)
-	if current_state:
-		current_state.handle_input(delta)
+	if _current_state:
+		_current_state.handle_input(delta)
+	
 	move_and_slide()
+	
 	if direction >= 1:
 		sprite.flip_h = false
 	elif direction <= -1:
 		sprite.flip_h = true
 
-func get_input() -> void:
-	if _state == PlayerState.HURT:
-		return
-	
-	velocity.x = 0
-	
-	if _state != PlayerState.DEATH:
-		if Input.is_action_pressed("left"):
-			velocity.x = -SPEED
-			sprite.flip_h = true
-		elif Input.is_action_pressed("right"):
-			velocity.x = SPEED
-			sprite.flip_h = false
-		
-		if Input.is_action_pressed("jump") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			SoundManager.play_clip(sound, SoundManager.SOUND_JUMP)
-		
-		if Input.is_action_just_pressed("shoot") and is_on_floor():
-			shoot()
-	
-	velocity.y = clampf(velocity.y, JUMP_VELOCITY, MAX_FALL)
-
-func update_player_state() -> void:
-	if _state == PlayerState.ATTACK or _state == PlayerState.HURT:
-		return
-	
-	if _state == PlayerState.DEATH:
-		if is_on_floor() or !(global_position.y < FALLEN_OFF):
-			set_physics_process(false)
-		return
-	
-	if is_on_floor():
-		if velocity.x == 0:
-			set_state(PlayerState.IDLE)
-		else:
-			set_state(PlayerState.RUN)
-	else:
-		if velocity.y > 0:
-			set_state(PlayerState.FALL)
-		else:
-			set_state(PlayerState.JUMP)
-
-func set_state(new_state: PlayerState) -> void:
-	if new_state == _state:
-		return
-	
-	if _state == PlayerState.FALL:
-		if new_state == PlayerState.IDLE or new_state == PlayerState.RUN:
-			SoundManager.play_clip(sound, SoundManager.SOUND_LAND)
-	
-	_state = new_state
-	match _state:
-		PlayerState.IDLE:
-			animation_player.play("idle")
-		PlayerState.RUN:
-			animation_player.play("run")
-		PlayerState.JUMP:
-			animation_player.play("jump")
-		PlayerState.FALL:
-			animation_player.play("fall")
-		PlayerState.HURT:
-			apply_hurt_jump()
-		PlayerState.DEATH:
-			animation_player.play("death")
-			velocity = Vector2.ZERO
+func handle_gravity(delta: float) -> void:
+	fallen_off_screen()
+	if not is_on_floor():
+		velocity.y += GRAVITY * delta
+		velocity.y = clamp(velocity.y, -INF, MAX_FALL_SPEED)
 
 func shoot() -> void:
 	var direction: Vector2 = Vector2.RIGHT
 	if sprite.flip_h:
 		direction = Vector2.LEFT
 	shooter.shoot(direction)
-	_state = PlayerState.ATTACK
-	animation_player.play("attack")
 	attack_timer.start()
 
 func reduce_lives(reduction: int) -> bool:
+	if _lives > 0: 
+		SoundManager.play_clip(sound, SoundManager.SOUND_DAMAGE)
+		SignalManager.on_player_hit.emit(_lives)
 	_lives -= reduction
-	SoundManager.play_clip(sound, SoundManager.SOUND_DAMAGE)
-	SignalManager.on_player_hit.emit(_lives)
 	if _lives <= 0:
 		death_timer.start()
-		set_state(PlayerState.DEATH)
 		return false
 	return true
 
-func apply_hit() -> void:
+func apply_hit(area: Area2D) -> void:
 	if _invincible or _lives <= 0:
 		return
 	if !reduce_lives(1):
 		return
 	go_invincible()
-	set_state(PlayerState.HURT)
+	change_state("HurtState", area)
 
 func go_invincible() -> void:
 	_invincible = true
 	invincible_player.play("invincible")
 	invincible_timer.start()
 
-func apply_hurt_jump() -> void:
-	animation_player.play("sad")
-	velocity = Vector2(velocity.x * -0.8, HURT_JUMP_VELOCITY)
-	hurt_timer.start()
-	_state = PlayerState.HURT
-
-func fallen_off() -> void:
+func fallen_off_screen() -> void:
 	if !(global_position.y < FALLEN_OFF):
 		reduce_lives(_lives)
 
@@ -198,13 +149,13 @@ func _on_invincible_timer_timeout() -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Pickup"):
 		return
-	apply_hit()
+	apply_hit(area)
 
 func _on_hurt_timer_timeout() -> void:
-	set_state(PlayerState.IDLE)
+	pass
 
 func _on_attack_timer_timeout() -> void:
-	set_state(PlayerState.IDLE)
+	pass
 
 func _on_death_timer_timeout() -> void:
 	SignalManager.on_game_over.emit()
@@ -222,5 +173,3 @@ func _on_respawn_timer_timeout() -> void:
 	global_position = _respawn
 	_lives = starting_lives
 	late_ready()
-	_state = PlayerState.IDLE
-	animation_player.play("idle")
